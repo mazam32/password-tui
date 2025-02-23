@@ -15,7 +15,7 @@ func NewAddCommand() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			service, password := args[0], args[1]
 
-			store, err := internal.LoadPasswords()
+			store, err := internal.NewDBManager()
 			if err != nil {
 				fmt.Println("Error loading passwords:", err)
 				return

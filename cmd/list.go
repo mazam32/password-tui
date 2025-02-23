@@ -12,13 +12,17 @@ func NewListCommand() *cobra.Command {
 		Use:   "list",
 		Short: "List all stored services",
 		Run: func(cmd *cobra.Command, args []string) {
-			store, err := internal.LoadPasswords()
+			store, err := internal.NewDBManager()
 			if err != nil {
 				fmt.Println("Error loading passwords:", err)
 				return
 			}
 
-			var services = store.ListServices()
+			services, err := store.ListServices()
+			if err != nil {
+				fmt.Println("Error:", err)
+				return
+			}
 			if len(services) == 0 {
 				fmt.Println("No passwords stored.")
 			} else {

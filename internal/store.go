@@ -12,7 +12,7 @@ var filePath string = "passwords.json"
 
 type PasswordStore struct {
 	sync.Mutex                   // prevents concurent access of the passwordstore struct
-	Passwords  map[string]string `json:"passswords"` //struct tags -> tells how to handle this field to a certain package -> in this case it is telling json package to put this variable under the field name of passwords
+	Passwords  map[string]string `json:"passwords"` //struct tags -> tells how to handle this field to a certain package -> in this case it is telling json package to put this variable under the field name of passwords
 }
 
 // loads existing passwords from a json file

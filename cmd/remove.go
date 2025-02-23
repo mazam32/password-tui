@@ -15,7 +15,7 @@ func NewRemoveCommand() *cobra.Command {
 		Run: func(cmd *cobra.Command, args []string) {
 			service := args[0]
 
-			store, err := internal.LoadPasswords()
+			store, err := internal.NewDBManager()
 			if err != nil {
 				fmt.Println("Error loading passwords:", err)
 				return
